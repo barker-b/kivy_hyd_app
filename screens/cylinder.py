@@ -11,7 +11,11 @@ class CylinderScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        root = BoxLayout(orientation='vertical')
+        window = BoxLayout(orientation = 'horizontal')
+
+
+       
+        left_side = BoxLayout(orientation='vertical')
 
         self.bore_input = TextInput(
             hint_text="Bore size",
@@ -42,16 +46,39 @@ class CylinderScreen(Screen):
 
 
 
-        root.add_widget(self.bore_input)
-        root.add_widget(self.rod_input)
-        root.add_widget(self.pressure_input)
-        root.add_widget(self.output_label)
-        root.add_widget(calculate)
-        root.add_widget(reset_button)
-        root.add_widget(back_button)
-        
+        left_side.add_widget(self.bore_input)
+        left_side.add_widget(self.rod_input)
+        left_side.add_widget(self.pressure_input)
+        left_side.add_widget(self.output_label)
+        left_side.add_widget(calculate)
+        left_side.add_widget(reset_button)
+        left_side.add_widget(back_button)
+                
 
-        self.add_widget(root)
+        buttons = BoxLayout(orientation='vertical')
+
+        bore_up_button = Button(text='up')
+        bore_down_button = Button()
+        rod_up_button = Button()
+        rod_down_button = Button()
+        pressure_up_button = Button()
+        pressure_down_button = Button()
+
+
+
+
+
+        buttons.add_widget(bore_up_button)
+        buttons.add_widget(bore_down_button)
+        buttons.add_widget(rod_up_button)
+        buttons.add_widget(rod_down_button)
+        buttons.add_widget(pressure_up_button)
+        buttons.add_widget(pressure_down_button)
+
+        window.add_widget(left_side)
+        window.add_widget(buttons)
+
+        self.add_widget(window)
 
     def reset(self, instance):
         self.bore_input.text = '' 
