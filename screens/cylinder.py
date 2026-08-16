@@ -32,14 +32,13 @@ class CylinderScreen(Screen):
             text=""
         )
         calculate = Button(text='Calculate')
-
         calculate.bind(on_press=self.calculate)
 
         back_button = Button(text='back')
-
         back_button.bind(on_press=self.go_back)
 
         reset_button = Button(text='reset')
+        reset_button.bind(on_press=self.reset)
 
 
 
@@ -55,7 +54,10 @@ class CylinderScreen(Screen):
         self.add_widget(root)
 
     def reset(self, instance):
-        pass
+        self.bore_input.text = '' 
+        self.rod_input.text = ''
+        self.pressure_input.text = ''
+        self.output_label.text = ''
 
     def go_back(self, instance):
         self.manager.current = "home"
