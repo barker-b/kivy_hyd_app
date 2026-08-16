@@ -27,11 +27,19 @@ class CylinderScreen(Screen):
             hint_text="Pressure (psi)",
 
         )
+
+        self.output_label = Label(
+            text=""
+        )
         root.add_widget(self.bore_input)
         root.add_widget(self.rod_input)
         root.add_widget(self.pressure_input)
+        root.add_widget(self.output_label)
+        calculate = Button(text='Calculate')
+        calculate.bind(on_press=self.button_click)
         back_button = Button(text='back')
         back_button.bind(on_press=self.go_back)
+        root.add_widget(calculate)
         root.add_widget(back_button)
         
 
