@@ -1,0 +1,64 @@
+#:kivy 2.3.1
+<CylinderScreen>:
+    BoxLayout:
+        orientation: "vertical"
+
+        GridLayout:
+            cols: 2
+            TextInput:
+                id: bore_input
+                hint_text: "Bore size"
+                size_hint_x: None
+                width: root.width * 0.75
+            BoxLayout:
+                orientation: "vertical"
+                Button:
+                    text: "up"
+                    on_press: root.bore_up()
+                Button:
+                    text: "down"
+                    on_press: root.bore_down()
+
+        GridLayout:
+            cols: 2
+            TextInput:
+                id: rod_input
+                hint_text: "Rod size"
+            BoxLayout:
+                orientation: "vertical"
+                Button:
+                    text: "up"
+                    on_press: root.rod_up()
+                Button:
+                    text: "down"
+                    on_press: root.rod_down()
+
+        GridLayout:
+            cols: 2
+            TextInput:
+                id: pressure_input
+                hint_text: "Pressure (psi)"
+            BoxLayout:
+                orientation: "vertical"
+                Button:
+                    text: "up"
+                    on_press: root.pressure_up()
+                Button:
+                    text: "down"
+                    on_press: root.pressure_down()
+
+        Label:
+            id: output_label
+            text: ""
+
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "Calculate"
+                on_press: root.calculate()
+            Button:
+                text: "Reset"
+                on_press: root.reset()
+            Button:
+                text: "Back"
+                on_press: root.go_back()

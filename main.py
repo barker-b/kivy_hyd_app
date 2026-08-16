@@ -8,13 +8,11 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from screens import HomeScreen, CylinderScreen
+from kivy.lang import Builder
 
+Builder.load_file("ui/cylinder.kv")
 
-
-
-
-
-class Grids(App):
+class Hydraulics(App):
     def build(self):
 
         sm = ScreenManager()
@@ -24,4 +22,4 @@ class Grids(App):
 
         return sm
 
-Grids().run()
+Hydraulics().run()
