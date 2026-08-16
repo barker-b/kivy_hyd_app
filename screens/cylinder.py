@@ -31,24 +31,36 @@ class CylinderScreen(Screen):
         self.output_label = Label(
             text=""
         )
+        calculate = Button(text='Calculate')
+
+        calculate.bind(on_press=self.calculate)
+
+        back_button = Button(text='back')
+
+        back_button.bind(on_press=self.go_back)
+
+        reset_button = Button(text='reset')
+
+
+
         root.add_widget(self.bore_input)
         root.add_widget(self.rod_input)
         root.add_widget(self.pressure_input)
         root.add_widget(self.output_label)
-        calculate = Button(text='Calculate')
-        calculate.bind(on_press=self.button_click)
-        back_button = Button(text='back')
-        back_button.bind(on_press=self.go_back)
         root.add_widget(calculate)
+        root.add_widget(reset_button)
         root.add_widget(back_button)
         
 
         self.add_widget(root)
 
+    def reset(self, instance):
+        pass
+
     def go_back(self, instance):
         self.manager.current = "home"
 
-    def button_click(self, instance):
+    def calculate(self, instance):
         try:
             bore = float(self.bore_input.text)
             rod = float(self.rod_input.text)
