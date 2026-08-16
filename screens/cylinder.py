@@ -1,19 +1,77 @@
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
-from kivy.uix.label import Label
-from kivy.uix.anchorlayout import AnchorLayout
-from kivy.uix.gridlayout import GridLayout
+from kivy.properties import StringProperty, NumericProperty, ObjectProperty
+
 from calculator import Formula
 
+
+class AdjustButton(Button):
+    key = StringProperty()
+    amount = NumericProperty()
+    screen = ObjectProperty()
+
+    def on_press(self):
+        # read and sanitize input
+        raw = self.screen.ids[f"{self.key}_input"].text
+        try:
+            value = float(raw)
+        except ValueError:
+            value = 0
+            self.screen.ids[f"{self.key}_input"].text = "0"
+
+        new_value = value + self.amount
+
+        # SAFETY 1: nothing below zero
+        if new_value < 0:
+            return
+
+        # SAFETY 2: bore/rod cannot be zero
+        if self.key in ("bore", "rod") and new_value == 0:
+            return
+
+        # SAFETY 3: rod cannot reach/exceed bore
+        if self.key == "rod":
+            try:
+                bore = float(self.screen.ids["bore_input"].text or 0)
+            except ValueError:
+                bore = 0
+                self.screen.ids["bore_input"].text = "0"
+
+            if new_value >= bore:
+                return
+
+        # SAFETY 4: bore cannot go below rod
+        if self.key == "bore":
+            try:
+                rod = float(self.screen.ids["rod_input"].text or 0)
+            except ValueError:
+                rod = 0
+                self.screen.ids["rod_input"].text = "0"
+
+            if new_value <= rod:
+                return
+        
+        # formatting rules
+        if self.key == "pressure":
+            self.screen.ids[f"{self.key}_input"].text = f"{new_value:.0f}"
+        else:
+            self.screen.ids[f"{self.key}_input"].text = str(new_value)
+
+        self.screen.calculate()
+
+
+
+
+
 class CylinderScreen(Screen):
+
+
 
     def reset(self, instance=None):
         self.ids.bore_input.text = '' 
         self.ids.rod_input.text = ''
         self.ids.pressure_input.text = ''
-        self.ids.output_label.text = ''
+        self.ids.output_label.text = 'Push force: 0\nPull force: 0'
 
     def go_back(self, instance=None):
         self.manager.current = "home"
@@ -30,6 +88,12 @@ class CylinderScreen(Screen):
                     "The same or larger than bore"
                 )  
                 return
+
+            if pressure == 0:
+                self.ids.output_label.text = (
+                    "Push force: 0\n"
+                    "Pull force: 0"
+                )
             
             calc = Formula(
                 bore=bore,
@@ -41,8 +105,8 @@ class CylinderScreen(Screen):
             pull = calc.cyl_ret_force()
 
             self.ids.output_label.text = (
-                f"Push force: {push:.0f}\n"
-                f"Pull force: {pull:.0f}"
+                f"Push force: {push:,.0f} pounds.\n"
+                f"Pull force: {pull:,.0f} pounds."
             )
 
 
