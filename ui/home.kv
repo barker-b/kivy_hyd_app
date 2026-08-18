@@ -1,2 +1,45 @@
-#kivy 2.3.1
+#:kivy 2.3.1
 <HomeScreen>:
+    # Main home page
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+        padding: 10
+
+        # page choices
+        GridLayout:
+            cols: 2
+            padding: 10
+            spacing: 10
+            
+            Button:
+                id: pump_button
+                text: 'Pump'
+
+
+            Button:
+                id: valve_button
+                text: 'Valve'
+
+
+            Button:
+                id: cyl_button
+                text: 'Cylinder'
+                on_press: root.go_to_cyl_page(self)
+
+            Button:
+                id: mnot_button
+                text: 'Motor'
+                on_press: root.go_to_mot_page(self)
+
+        # build.. placeholder for now
+        GridLayout:
+            cols: 1
+            padding: 10
+            spacing: 10
+            Label:
+                id: build_layout
+                text: 'build'
+
+
+
