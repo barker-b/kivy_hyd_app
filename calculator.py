@@ -1,6 +1,6 @@
 import math
 
-class Formula():
+class CylFormula():
     def __init__(self, bore, rod, pressure):
         self.bore = bore
         self.rod = rod

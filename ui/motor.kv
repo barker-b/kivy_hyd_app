@@ -1,0 +1,119 @@
+#:kivy 2.3.1
+<MotorScreen>:
+    # Main cylinder page
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 10
+        padding: 10
+        
+        # bore box
+        GridLayout:
+            cols: 2
+            padding: 10
+            spacing: 10
+            TextInput:
+                id: bore_input
+                hint_text: "Bore size"
+                font_size: '40sp'
+                size_hint_x: None
+                width: root.width * 0.75
+                halign: 'center'
+                valign: 'middle'
+                padding_y: [self.height / 2 - self.line_height /2]
+            BoxLayout:
+                padding: 10
+                spacing: 10
+                orientation: "vertical"
+                AdjustButton:
+                    text: "+ 0.5"
+                    key: "bore"
+                    amount: 0.5
+                    screen: root
+
+                AdjustButton:
+                    text: "-0.5"
+                    key: "bore"
+                    amount: -0.5
+                    screen: root
+
+        
+        # rod box
+        GridLayout:
+            cols: 2
+            padding: 10
+            spacing: 10
+            TextInput:
+                id: rod_input
+                hint_text: "Rod size"
+                font_size: '40sp'
+                size_hint_x: None
+                width: root.width * 0.75
+                halign: 'center'
+                valign: 'middle'
+                padding_y: [self.height / 2 - self.line_height /2]
+            BoxLayout:
+                padding: 10
+                spacing: 10
+                orientation: "vertical"
+                AdjustButton:
+                    text: "+.25"
+                    key: "rod"
+                    amount: 0.25
+                    screen: root
+                AdjustButton:
+                    text: "-.25"
+                    key: "rod"
+                    amount: -0.25
+                    screen: root
+
+        
+        #presssure box
+        GridLayout:
+            cols: 2
+            padding: 10
+            TextInput:
+                id: pressure_input
+                hint_text: "Pressure (psi)"
+                font_size: '40sp'
+                size_hint_x: None
+                width: root.width * 0.75
+                halign: 'center'
+                valign: 'middle'
+                padding_y: [self.height / 2 - self.line_height /2]
+            BoxLayout:
+                orientation: "vertical"
+                padding: 10
+                spacing: 10
+                AdjustButton:
+                    text: "+100"
+                    key: "pressure"
+                    amount: 100
+                    screen: root
+
+                AdjustButton:
+                    text: "-100"
+                    key: "pressure"
+                    amount: -100
+                    screen: root
+
+        
+        # output box
+        Label:
+            id: output_label
+            text: "Push force: 0 \nPull force: 0 "
+
+        
+        # Bottom buttons box
+        GridLayout:
+            rows: 1
+            Button:
+                text: "Calculate"
+                on_press: root.calculate()
+            Button:
+                text: "Reset"
+                on_press: root.reset()
+            Button:
+                text: "Back"
+                on_press: root.go_back()
+            Button:
+                text: "save"

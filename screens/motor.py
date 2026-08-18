@@ -64,7 +64,7 @@ class AdjustButton(Button):
 
 
 
-class CylinderScreen(Screen):
+class MotorScreen(Screen):
 
 
 
@@ -75,7 +75,7 @@ class CylinderScreen(Screen):
         self.ids.output_label.text = 'Push force: 0\nPull force: 0'
 
     def go_back(self, instance=None):
-        self.manager.transition = SlideTransition(direction="left")
+        self.manager.transition = SlideTransition(direction="right")
         self.manager.current = "home"
 
     def calculate(self, instance=None):
