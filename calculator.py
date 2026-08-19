@@ -17,3 +17,7 @@ class CylFormula():
 
     def cyl_ret_force(self):
         return self.pressure * self.annulus()
+
+class MotorFormula():
+    def __init__(self, flow, rod, pressure):
+        pass

@@ -12,8 +12,8 @@
             padding: 10
             spacing: 10
             TextInput:
-                id: bore_input
-                hint_text: "Bore size"
+                id: displacement_input
+                hint_text: "Displacement (in³)"
                 font_size: '40sp'
                 size_hint_x: None
                 width: root.width * 0.75
@@ -24,17 +24,17 @@
                 padding: 10
                 spacing: 10
                 orientation: "vertical"
-                AdjustButton:
+                MotorAdjustButton:
                     text: "+ 0.5"
-                    key: "bore"
+                    #key: "displacement"
                     amount: 0.5
-                    screen: root
+                    #screen: root
 
-                AdjustButton:
+                MotorAdjustButton:
                     text: "-0.5"
-                    key: "bore"
+                    #key: "displacement"
                     amount: -0.5
-                    screen: root
+                    #screen: root
 
         
         # rod box
@@ -43,8 +43,8 @@
             padding: 10
             spacing: 10
             TextInput:
-                id: rod_input
-                hint_text: "Rod size"
+                id:  flow_input
+                hint_text: "Flow (gpm)"
                 font_size: '40sp'
                 size_hint_x: None
                 width: root.width * 0.75
@@ -55,16 +55,16 @@
                 padding: 10
                 spacing: 10
                 orientation: "vertical"
-                AdjustButton:
+                MotorAdjustButton:
                     text: "+.25"
-                    key: "rod"
+                    #key: "flow"
                     amount: 0.25
-                    screen: root
-                AdjustButton:
+                    #screen: root
+                MotorAdjustButton:
                     text: "-.25"
-                    key: "rod"
+                    #key: "flow"
                     amount: -0.25
-                    screen: root
+                    #screen: root
 
         
         #presssure box
@@ -84,23 +84,23 @@
                 orientation: "vertical"
                 padding: 10
                 spacing: 10
-                AdjustButton:
+                MotorAdjustButton:
                     text: "+100"
-                    key: "pressure"
+                    #key: "pressure"
                     amount: 100
-                    screen: root
+                    #screen: root
 
-                AdjustButton:
+                MotorAdjustButton:
                     text: "-100"
-                    key: "pressure"
+                    #key: "pressure"
                     amount: -100
-                    screen: root
+                    #screen: root
 
         
         # output box
         Label:
             id: output_label
-            text: "Push force: 0 \nPull force: 0 "
+            text: "Motor torque: 0 \nMotor speed: 0 "
 
         
         # Bottom buttons box
@@ -108,7 +108,7 @@
             rows: 1
             Button:
                 text: "Calculate"
-                on_press: root.calculate()
+                on_press: #root.calculate()
             Button:
                 text: "Reset"
                 on_press: root.reset()

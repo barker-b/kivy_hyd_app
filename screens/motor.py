@@ -3,15 +3,17 @@ from kivy.uix.button import Button
 from kivy.properties import StringProperty, NumericProperty, ObjectProperty
 
 
-from calculator import CylFormula
+from calculator import MotorFormula
 
 
-class AdjustButton(Button):
+class MotorAdjustButton(Button):
     key = StringProperty()
     amount = NumericProperty()
     screen = ObjectProperty()
 
     def on_press(self):
+        return
+        
         # read and sanitize input
         raw = self.screen.ids[f"{self.key}_input"].text
         try:
@@ -59,7 +61,7 @@ class AdjustButton(Button):
             self.screen.ids[f"{self.key}_input"].text = str(new_value)
 
         self.screen.calculate()
-
+    
 
 
 
@@ -69,10 +71,10 @@ class MotorScreen(Screen):
 
 
     def reset(self, instance=None):
-        self.ids.bore_input.text = '' 
-        self.ids.rod_input.text = ''
+        self.ids.displacement_input.text = '' 
+        self.ids.flow_input.text = ''
         self.ids.pressure_input.text = ''
-        self.ids.output_label.text = 'Push force: 0\nPull force: 0'
+        self.ids.output_label.text = 'Motor torque: 0\nMotor speed: 0'
 
     def go_back(self, instance=None):
         self.manager.transition = SlideTransition(direction="right")
@@ -80,35 +82,29 @@ class MotorScreen(Screen):
 
     def calculate(self, instance=None):
         try:
-            bore = float(self.ids.bore_input.text)
-            rod = float(self.ids.rod_input.text)
+            displacement = float(self.ids.displacement_input.text)
+            flow = float(self.ids.flow_input.text)
             pressure = float(self.ids.pressure_input.text)
 
-            if rod >= bore:
-                self.ids.output_label.text = (
-                    "Invalid, rod cannot be\n"
-                    "the same or larger than bore."
-                )  
-                return
 
             if pressure == 0:
                 self.ids.output_label.text = (
-                    "Push force: 0\n"
-                    "Pull force: 0"
+                    "Motor torque: 0\n"
+                    "Motor speed: 0"
                 )
             
-            calc = CylFormula(
-                bore=bore,
-                rod=rod,
+            calc = MotorFormula(
+                displacement=displacement,
+                flow=flow,
                 pressure=pressure
             )
 
-            push = calc.cyl_ext_force()
-            pull = calc.cyl_ret_force()
+            torque = None
+            motor_speed = None
 
             self.ids.output_label.text = (
-                f"Push force: {push:,.0f} pounds.\n"
-                f"Pull force: {pull:,.0f} pounds."
+                f"Motor torque: {torque:,.0f} ft-lbs.\n"
+                f"Motor speed: {motor_speed:,.0f} rpm."
             )
 
 
@@ -116,3 +112,4 @@ class MotorScreen(Screen):
             self.ids.output_label.text = (
                 "Invalid input."
             )
+    

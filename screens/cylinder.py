@@ -6,7 +6,7 @@ from kivy.properties import StringProperty, NumericProperty, ObjectProperty
 from calculator import CylFormula
 
 
-class AdjustButton(Button):
+class CylAdjustButton(Button):
     key = StringProperty()
     amount = NumericProperty()
     screen = ObjectProperty()
