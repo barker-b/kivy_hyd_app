@@ -19,5 +19,13 @@ class CylFormula():
         return self.pressure * self.annulus()
 
 class MotorFormula():
-    def __init__(self, flow, rod, pressure):
-        pass
+    def __init__(self, displacement, flow, pressure):
+        self.displacement = displacement
+        self.flow = flow
+        self.pressure = pressure
+
+    def motor_torque(self):
+        return (self.pressure * self.displacement) / (2 * math.pi)
+
+    def motor_speed(self):
+        return 231 * self.flow / self.displacement
