@@ -3,10 +3,21 @@
     # Main cylinder page
     BoxLayout:
         orientation: "vertical"
-        spacing: 10
-        padding: 10
+        spacing: 5
+        padding: 5
+
+        # label above displacement box
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: 20
+            Label:
+                text: "Displacement"
+                halign: 'left'
+                valign: 'middle'
+                text_size: self.size
         
-        # bore box
+        # displacement box
         GridLayout:
             cols: 2
             padding: 10
@@ -36,8 +47,19 @@
                     amount: -0.5
                     screen: root
 
+        # label above flow box
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: 20
+            Label:
+                text: "Flow"
+                halign: 'left'
+                valign: 'middle'
+                text_size: self.size
+
         
-        # rod box
+        # flow box
         GridLayout:
             cols: 2
             padding: 10
@@ -66,7 +88,17 @@
                     amount: -0.25
                     screen: root
 
-        
+        # label above the pressure box box
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: 20
+            Label:
+                text: "Pressure"
+                halign: 'left'
+                valign: 'middle'
+                text_size: self.size
+
         #presssure box
         GridLayout:
             cols: 2
