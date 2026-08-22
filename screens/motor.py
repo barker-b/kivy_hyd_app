@@ -4,7 +4,6 @@ from kivy.properties import StringProperty, NumericProperty, ObjectProperty
 
 from calculator import MotorFormula
 
-
 class MotorAdjustButton(Button):
     key = StringProperty()
     amount = NumericProperty()
@@ -12,7 +11,8 @@ class MotorAdjustButton(Button):
 
     def on_press(self):
 
-        hint = int(self.screen.ids[f"{self.key}_input"].text)
+
+        hint = self.screen.ids[f"{self.key}_input"].text
         try:
             value = float(hint)
         except ValueError:
@@ -21,11 +21,14 @@ class MotorAdjustButton(Button):
 
         new_value = value + self.amount
 
+        if new_value < 0:
+            return
+        
         self.screen.ids[f"{self.key}_input"].text = str(new_value)
 
         self.screen.calculate()
 
-    
+
 class MotorScreen(Screen):
 
 
@@ -60,6 +63,7 @@ class MotorScreen(Screen):
 
             torque = calc.motor_torque()
             motor_speed = calc.motor_speed()
+
 
             self.ids.output_label.text = (
                 f"Motor torque: {torque:,.0f} ft-lbs.\n"

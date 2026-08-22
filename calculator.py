@@ -25,7 +25,7 @@ class MotorFormula():
         self.pressure = pressure
 
     def motor_torque(self):
-        return (self.pressure * self.displacement) / (2 * math.pi)
+        return (self.pressure * self.displacement) / (2 * math.pi) / 12
 
     def motor_speed(self):
         return 231 * self.flow / self.displacement
