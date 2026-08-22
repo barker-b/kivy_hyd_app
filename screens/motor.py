@@ -2,7 +2,6 @@ from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
 from kivy.uix.button import Button
 from kivy.properties import StringProperty, NumericProperty, ObjectProperty
 
-
 from calculator import MotorFormula
 
 
@@ -12,12 +11,22 @@ class MotorAdjustButton(Button):
     screen = ObjectProperty()
 
     def on_press(self):
-        return
-        
 
+        hint = int(self.screen.ids[f"{self.key}_input"].text)
+        try:
+            value = float(hint)
+        except ValueError:
+            value = 0
+            self.screen.ids[f"{self.key}_input"].text = "0"
 
+        new_value = value + self.amount
+
+        self.screen.ids[f"{self.key}_input"].text = str(new_value)
+
+        self.screen.calculate()
+
+    
 class MotorScreen(Screen):
-
 
 
     def reset(self, instance=None):
