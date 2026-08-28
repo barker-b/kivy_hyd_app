@@ -36,38 +36,38 @@
                 padding: 10
                 spacing: 10
                 orientation: "vertical"
-                MotorAdjustButton:
+                PumpAdjustButton:
                     text: "+ 0.5"
                     key: "displacement"
                     amount: 0.5
                     screen: root
 
-                MotorAdjustButton:
+                PumpAdjustButton:
                     text: "-0.5"
                     key: "displacement"
                     amount: -0.5
                     screen: root
 
-        # label above flow box
+        # label above rpm box
         BoxLayout:
             orientation: 'vertical'
             size_hint_y: None
             height: 20
             Label:
-                text: "Flow"
+                text: "RPM"
                 halign: 'left'
                 valign: 'middle'
                 text_size: self.size
 
         
-        # flow box
+        # rpm box
         GridLayout:
             cols: 2
             padding: 10
             spacing: 10
             TextInput:
-                id:  flow_input
-                hint_text: "Flow (gpm)"
+                id:  rpm_input
+                hint_text: "Speed (rpm)"
                 font_size: '40sp'
                 size_hint_x: None
                 width: root.width * 0.75
@@ -78,14 +78,14 @@
                 padding: 10
                 spacing: 10
                 orientation: "vertical"
-                MotorAdjustButton:
+                PumpAdjustButton:
                     text: "+.25"
-                    key: "flow"
+                    key: "rpm"
                     amount: 0.25
                     screen: root
-                MotorAdjustButton:
+                PumpAdjustButton:
                     text: "-.25"
-                    key: "flow"
+                    key: "rpm"
                     amount: -0.25
                     screen: root
 
@@ -117,13 +117,13 @@
                 orientation: "vertical"
                 padding: 10
                 spacing: 10
-                MotorAdjustButton:
+                PumpAdjustButton:
                     text: "+100"
                     key: "pressure"
                     amount: 100
                     screen: root
 
-                MotorAdjustButton:
+                PumpAdjustButton:
                     text: "-100"
                     key: "pressure"
                     amount: -100
@@ -133,7 +133,7 @@
         # output box
         Label:
             id: output_label
-            text: "Motor torque: 0 \nMotor speed: 0 "
+            text: "Pump output flow: 0 \nHorsepower: 0 "
 
         
         # Bottom buttons box

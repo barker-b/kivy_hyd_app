@@ -29,3 +29,22 @@ class MotorFormula():
 
     def motor_speed(self):
         return 231 * self.flow / self.displacement
+
+class PumpFormula():
+    def __init__(self, speed, displacement, pressure):
+        self.speed = speed
+        self.displacement = displacement
+        self.pressure = pressure
+
+    def output_flow(self):
+        return self.speed * self.displacement / 231
+
+    def horse_power(self):
+        return self.output_flow() * self.pressure / 1714
+
+    def torque(self):
+        return
+
+
+
+

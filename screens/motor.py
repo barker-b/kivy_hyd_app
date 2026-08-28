@@ -81,4 +81,3 @@ class MotorScreen(Screen):
                     "Motor torque: 0\n"
                     "Motor speed: 0"
             )
-    

@@ -2,10 +2,10 @@ from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
 from kivy.uix.button import Button
 from kivy.properties import StringProperty, NumericProperty, ObjectProperty
 
-from calculator import MotorFormula
+from calculator import MotorFormula # pump formula
 
 
-class MotorAdjustButton(Button):
+class PumpAdjustButton(Button): # works univerally, test and debug
     key = StringProperty()
     amount = NumericProperty()
     screen = ObjectProperty()
@@ -33,32 +33,33 @@ class MotorAdjustButton(Button):
 class PumpScreen(Screen):
 
 
-    def reset(self, instance=None):
+    def reset(self, instance=None): # Good to go
         self.ids.displacement_input.text = '' 
-        self.ids.flow_input.text = ''
+        self.ids.rpm_input.text = ''
         self.ids.pressure_input.text = ''
-        self.ids.output_label.text = 'Motor torque: 0\nMotor speed: 0'
+        self.ids.output_label.text = "Pump output flow: 0 \nHorsepower: 0 "
 
-    def go_back(self, instance=None):
+    def go_back(self, instance=None): # Good to go
         self.manager.transition = SlideTransition(direction="left")
         self.manager.current = "home"
 
-    def calculate(self, instance=None):
+    def calculate(self, instance=None): # needs calculator.py updated + internal logic
+        return
         try:
             displacement = float(self.ids.displacement_input.text)
-            flow = float(self.ids.flow_input.text)
+            rpm = float(self.ids.rpm_input.text)
             pressure = float(self.ids.pressure_input.text)
 
 
             if pressure == 0:
                 self.ids.output_label.text = (
-                    "Motor torque: 0\n"
-                    "Motor speed: 0"
+                    "Pump outlet flow: 0\n"
+                    "Horsepower: 0"
                 )
             
             calc = MotorFormula(
                 displacement=displacement,
-                flow=flow,
+                rpm=rpm,
                 pressure=pressure
             )
 
