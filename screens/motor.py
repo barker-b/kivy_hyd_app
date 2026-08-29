@@ -48,12 +48,6 @@ class MotorScreen(Screen):
             flow = float(self.ids.flow_input.text)
             pressure = float(self.ids.pressure_input.text)
 
-
-            if pressure == 0:
-                self.ids.output_label.text = (
-                    "Motor torque: 0\n"
-                    "Motor speed: 0"
-                )
             
             calc = MotorFormula(
                 displacement=displacement,
@@ -67,7 +61,7 @@ class MotorScreen(Screen):
 
             self.ids.output_label.text = (
                 f"Motor torque: {torque:,.0f} ft-lbs.\n"
-                f"Motor speed: {motor_speed:,.0f} rpm."
+                f"Motor speed: {motor_speed:,.0f} RPM."
             )
 
 
@@ -78,6 +72,6 @@ class MotorScreen(Screen):
 
         except ZeroDivisionError:
             self.ids.output_label.text = (
-                    "Motor torque: 0\n"
-                    "Motor speed: 0"
+                    "Motor torque: 0 ft-lbs.\n"
+                    "Motor speed: 0 RPM."
             )

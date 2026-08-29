@@ -60,13 +60,7 @@ class CylAdjustButton(Button):
 
         self.screen.calculate()
 
-
-
-
-
 class CylinderScreen(Screen):
-
-
 
     def reset(self, instance=None):
         self.ids.bore_input.text = '' 

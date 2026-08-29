@@ -1,5 +1,4 @@
 #:kivy 2.3.1
-
 <PumpScreen>:
     # Main cylinder page
     BoxLayout:
@@ -79,14 +78,14 @@
                 spacing: 10
                 orientation: "vertical"
                 PumpAdjustButton:
-                    text: "+.25"
+                    text: "+100"
                     key: "rpm"
-                    amount: 0.25
+                    amount: 100
                     screen: root
                 PumpAdjustButton:
-                    text: "-.25"
+                    text: "-100"
                     key: "rpm"
-                    amount: -0.25
+                    amount: -100
                     screen: root
 
         # label above the pressure box box
@@ -133,7 +132,7 @@
         # output box
         Label:
             id: output_label
-            text: "Pump output flow: 0 \nHorsepower: 0 "
+            text: "Pump output flow: 0 \nHorsepower: 0 \nDriving torque: 0"
 
         
         # Bottom buttons box
