@@ -1,0 +1,35 @@
+#:kivy 2.3.1
+<FormulaScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing : 5
+        padding: 5
+        Label:
+            text: "Cylinder Formulas"
+
+        Label:            
+            text:
+                "Bore Piston Area = π x r² \n\
+                Rod Piston Area = Piston Area - Rod Area\n\
+                Push Force = Bore Piston Area x Pressure\n\
+                Pull Force = Rod Piston Area x Pressure"
+
+        Label:
+            text: "Motor Formulas"
+
+        Label:
+            text:
+                "Motor Torque = Pressure x Displacement / 2π\n\
+                Motor Speed = 231 x Flow / Displacement"
+
+        Label:
+            text: "Pump Formulas"
+
+        Label:
+            text:
+                "Pump FLow = RPM x Displacement / 231\n\
+                Pump Hose Power = Pump Flow x Presssure / 1,714\n\
+                Driving Tourqe = Pressure x Displacement / 2π"
+        Button:
+            text: "Back"
+            on_press: root.go_back()

@@ -16,3 +16,7 @@ class HomeScreen(Screen):
     def go_to_pump_page(self, instance):
         self.manager.transition = SlideTransition(direction="right")
         self.manager.current = "pump"
+
+    def go_to_formula_page(self, instance=None):
+        self.manager.transition = SlideTransition(direction='left')
+        self.manager.current = "formula"
