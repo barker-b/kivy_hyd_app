@@ -1,0 +1,28 @@
+#:kivy 2.3.1
+
+<AngleScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: dp(12)
+        padding: dp(12)
+        canvas.before:
+            Color:
+                rgba: 0.08, 0.10, 0.12, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Cylinder Force Per Angle"
+            font_size: "28sp"
+            bold: True
+            color: 0.95, 0.95, 0.95, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Widget:
+
+        Button:
+            text: "Back"
+            size_hint_y: None
+            height: 100

@@ -6,6 +6,7 @@ from kivy.properties import StringProperty, NumericProperty, ObjectProperty
 from calculator import CylFormula
 
 
+
 class CylAdjustButton(Button):
     key = StringProperty()
     amount = NumericProperty()
@@ -71,6 +72,10 @@ class CylinderScreen(Screen):
     def go_back(self, instance=None):
         self.manager.transition = SlideTransition(direction="left")
         self.manager.current = "home"
+
+    def go_to_angle_screen(self):
+        self.manager.transition = SlideTransition(direction="right")
+        self.manager.current = "angles"
 
     def calculate(self, instance=None):
         try:

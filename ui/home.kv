@@ -1,10 +1,31 @@
 #:kivy 2.3.1
+
+<SectionButton>:
+    background_normal: ''
+    background_down: ''
+    background_color: 0, 0, 0, 0
+    font_size: "22sp"
+    canvas.before:
+        Color:
+            rgba: (0.15, 0.18, 0.30, 1) if self.state == 'normal' else (0.25, 0.35, 0.45, 1)
+        RoundedRectangle: 
+            pos: self.pos
+            size: self.size
+            radius: [20]
+
+
 <HomeScreen>:
     # Main home page
     BoxLayout:
         orientation: 'vertical'
         spacing: 10
         padding: 10
+        canvas.before:
+            Color:
+                rgba: 0.08, 0.10, 0.12, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
 
         # page choices
         GridLayout:
@@ -12,33 +33,37 @@
             padding: 10
             spacing: 10
             
-            Button:
+            SectionButton:
                 id: pump_button
                 text: 'Pump'
-                on_press: root.go_to_pump_page(self)
+                on_press: root.go_to_pump_page()
 
 
-            Button:
+            SectionButton:
                 id: valve_button
                 text: 'Formulas'
-                on_press: root.go_to_formula_page(self)
+                on_press: root.go_to_formula_page()
 
 
-            Button:
+            SectionButton:
                 id: cyl_button
                 text: 'Cylinder'
-                on_press: root.go_to_cyl_page(self)
+                on_press: root.go_to_cyl_page()
 
-            Button:
-                id: mnot_button
+            SectionButton:
+                id: mot_button
                 text: 'Motor'
-                on_press: root.go_to_mot_page(self)
+                on_press: root.go_to_mot_page()
 
         # build.. placeholder for now
         GridLayout:
             cols: 1
             padding: 10
             spacing: 10
+            Image:
+                source: "images/cylinder.png"
+                allow_stretch: True
+                keep_ratio: True
             Label:
                 id: build_layout
                 text: 'build'
