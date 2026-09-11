@@ -3,14 +3,21 @@
     # Main cylinder page
     BoxLayout:
         orientation: "vertical"
-        spacing: 10
-        padding: 10
+        spacing: dp(10)
+        padding: dp(10)
+        canvas.before:
+            Color: # reset color 0.08, 0.10, 0.12, 1
+                rgba: 0.08, 0.10, 0.12, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
         
         # bore box
         GridLayout:
             cols: 2
             padding: 10
             spacing: 10
+
             TextInput:
                 id: bore_input
                 hint_text: "Bore size"
@@ -20,10 +27,12 @@
                 halign: 'center'
                 valign: 'middle'
                 padding_y: [self.height / 2 - self.line_height /2]
+
             BoxLayout:
                 padding: 10
                 spacing: 10
                 orientation: "vertical"
+
                 CylAdjustButton:
                     text: "+ 0.5"
                     key: "bore"

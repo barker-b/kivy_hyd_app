@@ -3,8 +3,14 @@
     # Main cylinder page
     BoxLayout:
         orientation: "vertical"
-        spacing: 5
-        padding: 5
+        spacing: sp(10)
+        padding: sp(10)
+        canvas.before:
+            Color:
+                rgba: 0.08, 0.10, 0.12, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
 
         # label above displacement box
         BoxLayout:

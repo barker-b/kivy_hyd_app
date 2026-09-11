@@ -12,11 +12,17 @@
             radius: [20, 20, 20, 20]
 
 <MotorScreen>:
-    # Main cylinder page
+    # Main motor page
     BoxLayout:
         orientation: "vertical"
-        spacing: 5
-        padding: 5
+        spacing: dp(10)
+        padding: dp(10)
+        canvas.before:
+            Color:
+                rgba: 0.08, 0.10, 0.12, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
 
         # label above displacement box
         BoxLayout:

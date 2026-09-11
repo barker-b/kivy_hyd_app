@@ -74,7 +74,7 @@ class CylinderScreen(Screen):
         self.manager.current = "home"
 
     def go_to_angle_screen(self):
-        self.manager.transition = SlideTransition(direction="right")
+        self.manager.transition = SlideTransition(direction="left")
         self.manager.current = "angles"
 
     def calculate(self, instance=None):

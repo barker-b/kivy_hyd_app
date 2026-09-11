@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+env/
+venv/
+
+# Build artifacts
+build/
+dist/
+*.spec
+
+# PyInstaller
+*.toc
+*.pkg
+*.pyz
+*.zip
+*.html
